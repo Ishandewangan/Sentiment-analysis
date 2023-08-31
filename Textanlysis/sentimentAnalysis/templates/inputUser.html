@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+  }
+
+  #styledText {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  #textInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  #submitButton {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  #submitButton:hover {
+    background-color: #0056b3;
+  }
+  #backButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+#backButton {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#backButton:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Input Text</h2>
+    <form method = "POST" action="{% url 'inputFromUser' %}">
+        {% csrf_token %}
+      <textarea id="textInput" name="text" placeholder="Enter your text here"></textarea>
+      <button type="Submit" id="submitButton">Submit</button>
+    </form>
+    <div id="styledText"></div>
+    <a href="{% url 'homePage' %}" id="backButton">Back to Home</a>
+</div>
+  
+</body>
+</html>

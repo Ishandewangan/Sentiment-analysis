@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #historyTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #historyTable th,
+        #historyTable td {
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+
+        #historyTable th {
+            background-color: #f0f0f0;
+        }
+        #backButtonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        #backButton {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #backButton:hover {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sentiment Analysis History</h2>
+        <table id="historyTable">
+            <tr>
+                <th>S.No.</th>
+                <th>Input Text</th>
+                <th>Sentiment</th>
+                <th>Confidence</th>
+            </tr>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.s_no }}</td>
+                    <td>{{ result.text }}</td>
+                    <td>{{ result.sentiment }}</td>
+                    <td>{{ result.confidence|floatformat:"2" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div id="backButtonContainer">
+            <a href="{% url 'homePage' %}" id="backButton">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
